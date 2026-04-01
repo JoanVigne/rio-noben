@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://www.psychologue.net/10017784/css/widget.css" />
@@ -28,8 +28,8 @@
           <a href="#top" aria-label="Retour en haut" class="brand">
             <img
               class="logo"
-              alt="Logo"
-              src="https://static.wixstatic.com/media/653fe9_7ba517236edf42409ae3d9846b91b81a~mv2.png"
+              alt="Rio Noben"
+              src="./assets/logo.png"
               loading="eager"
             />
           </a>
@@ -46,7 +46,6 @@
             <a href="#accompagnements">Accompagnements</a>
             <a href="#modalites">Modalités</a>
             <a href="#temoignages">Témoignages</a>
-            <a href="#contact">Contact</a>
             <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
           </nav>
         </div>
@@ -55,27 +54,26 @@
 
     <main id="main">
       <section class="hero" id="accueil">
-        <div class="container">
-          <div class="hero-banner card" aria-label="Bannière">
+          <div class="hero-banner card hero-banner--full" aria-label="Bannière">
             <img class="hero-banner__img" src="./assets/1.avif" alt="" loading="eager" />
             <div class="hero-banner__overlay">
-              <p class="pill">Montpellier • En cabinet ou en ligne</p>
-              <h1 class="hero-title">Rio Noben, psychothérapie humaniste</h1>
-              <h2 class="hero-subtitle hero-subtitle--title">Accompagnement psychologique à Montpellier</h2>
-              <p class="hero-subtitle">
-                Un accompagnement thérapeutique sécurisant à Montpellier pour adultes, jeunes adultes et couples.
-              </p>
-              <p class="hero-subtitle">
-                Séances de 1h en cabinet ou en ligne, pour dépasser vos blocages et retrouver une vie alignée.
-              </p>
-              <div class="hero-actions">
-                <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
-                <a class="button button--ghost" href="#espace">Un espace de parole</a>
+              <div class="container">
+                <p class="pill">Montpellier • En cabinet ou en ligne</p>
+                <h1 class="hero-title">Rio Noben, psychothérapie humaniste</h1>
+                <h2 class="hero-subtitle hero-subtitle--title">Accompagnement psychologique à Montpellier</h2>
+                <p class="hero-subtitle">
+                  Un accompagnement thérapeutique sécurisant à Montpellier pour adultes, jeunes adultes et couples.
+                </p>
+                <p class="hero-subtitle">
+                  Séances de 1h en cabinet ou en ligne, pour dépasser vos blocages et retrouver une vie alignée.
+                </p>
+                <div class="hero-actions">
+                  <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
+                  <a class="button button--ghost" href="#espace">Un espace de parole</a>
+                </div>
               </div>
             </div>
           </div>
-
-        </div>
       </section>
 
       <section id="espace" class="section">
@@ -362,34 +360,25 @@
             <p>N’hésitez pas à m’écrire ici.</p>
           </div>
 
-          <div class="two-col">
-            <div class="contact-item">
-              <p class="fine"><strong>Cabinet au Corum</strong></p>
-              <p class="fine">11 rue du Faubourg de Nimes</p>
-              <p class="fine">34000 - Montpellier</p>
-              <p class="fine"><a href="mailto:nobenrio@proton.me">nobenrio@proton.me</a></p>
+          <form class="contact-item form contact-form" data-contact-form>
+            <h3>Message</h3>
+            <div class="field">
+              <label for="name">Nom<span aria-hidden="true">*</span></label>
+              <input id="name" name="name" autocomplete="name" required />
             </div>
-
-            <form class="contact-item form" data-contact-form>
-              <h3>Message</h3>
-              <div class="field">
-                <label for="name">Nom<span aria-hidden="true">*</span></label>
-                <input id="name" name="name" autocomplete="name" required />
-              </div>
-              <div class="field">
-                <label for="email">Email<span aria-hidden="true">*</span></label>
-                <input id="email" name="email" type="email" autocomplete="email" required />
-              </div>
-              <div class="field">
-                <label for="message">Message<span aria-hidden="true">*</span></label>
-                <textarea id="message" name="message" rows="6" required></textarea>
-              </div>
-              <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
-                <button class="button button--primary" type="submit">Envoyer</button>
-                <p class="fine" data-form-status role="status" aria-live="polite" style="margin: 0"></p>
-              </div>
-            </form>
-          </div>
+            <div class="field">
+              <label for="email">Email<span aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="message">Message<span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+              <button class="button button--primary" type="submit">Envoyer</button>
+              <p class="fine" data-form-status role="status" aria-live="polite" style="margin: 0"></p>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -398,8 +387,12 @@
     <footer class="site-footer">
       <div class="container">
         <div class="footer-row">
-          <span>© Rio Noben <span id="year"></span></span>
-          <span>Cabinet au Corum • 11 rue du Faubourg de Nimes • 34000 Montpellier • <a href="mailto:nobenrio@proton.me">nobenrio@proton.me</a></span>
+          <div class="footer-col footer-col--brand">
+            <img class="footer-logo" src="./assets/logo.png" alt="Rio Noben" loading="lazy" />
+            <span class="footer-year">© <span id="year"></span></span>
+          </div>
+          <div class="footer-col">11 rue du Faubourg de Nimes, 34000 Montpellier</div>
+          <div class="footer-col"><a href="mailto:nobenrio@proton.me">nobenrio@proton.me</a></div>
         </div>
       </div>
     </footer>
