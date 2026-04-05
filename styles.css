@@ -286,9 +286,17 @@ a:hover {
   background: rgba(255, 255, 255, 0.72);
   color: var(--text);
   font-weight: 600;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.2;
   text-decoration: none;
   cursor: pointer;
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+button.button {
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .menu .button {
@@ -659,6 +667,77 @@ a:hover {
   border-bottom: 1px solid rgba(24, 20, 16, 0.07);
 }
 
+#modalites.section--sage {
+  overflow-x: clip;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#modalites .modalites-shell {
+  display: grid;
+  grid-template-columns: minmax(300px, min(48vw, 560px)) minmax(0, 1fr);
+  gap: clamp(28px, 4.5vw, 52px);
+  align-items: start;
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 0;
+  padding-right: max(clamp(16px, 4vw, 40px), calc((100vw - min(calc(100vw - 40px), var(--max))) / 2));
+}
+
+#modalites .modalites-media {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  border: 1px solid rgba(24, 20, 16, 0.1);
+  border-left: none;
+  align-self: start;
+}
+
+#modalites .modalites-media .media__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: clamp(300px, 36vw, 460px);
+  max-height: min(560px, 68vh);
+  object-fit: cover;
+}
+
+#modalites .modalites-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 20px);
+  padding-top: clamp(36px, 5vw, 62px);
+}
+
+#modalites .modalites-head.section-head {
+  margin-bottom: 0;
+}
+
+#modalites .modalites-head h2 {
+  text-align: left;
+}
+
+.modalites-copy {
+  display: grid;
+  gap: clamp(14px, 2vw, 20px);
+  max-width: 62ch;
+  margin: 0;
+}
+
+.modalites-copy p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.modalites-copy strong {
+  font-weight: 600;
+}
+
+#modalites .modalites-cta {
+  margin-top: clamp(6px, 1.2vw, 14px);
+}
+
 .section-head {
   display: grid;
   gap: 8px;
@@ -975,6 +1054,68 @@ textarea:focus {
   height: 320px;
 }
 
+#temoignages .temoignages-aside {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 20px);
+  align-items: flex-start;
+  min-width: 0;
+}
+
+#temoignages .temoignages-head.section-head {
+  margin-bottom: clamp(22px, 3vw, 36px);
+  width: 100%;
+  max-width: none;
+  text-align: center;
+}
+
+#temoignages .temoignages-head h2 {
+  text-align: center;
+}
+
+#temoignages .temoignages-head p {
+  max-width: 62ch;
+  margin-inline: auto;
+  text-align: center;
+}
+
+#temoignages .temoignages-photo {
+  width: min(100%, 500px);
+  max-width: 500px;
+}
+
+#temoignages .temoignages-photo .media__img {
+  width: 100%;
+  height: 624px;
+  min-height: 0;
+  object-fit: cover;
+}
+
+#temoignages .temoignages-stamp {
+  margin-top: clamp(18px, 2.5vw, 26px);
+  display: flex;
+  justify-content: center;
+}
+
+.temoignages-stamp img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
+#temoignages .temoignages-cta {
+  margin-top: clamp(20px, 3vw, 28px);
+  display: flex;
+  justify-content: center;
+}
+
+#temoignages .two-col--narrow-left {
+  grid-template-columns: minmax(260px, 1fr) minmax(0, min(100%, 460px));
+  gap: clamp(20px, 3vw, 32px);
+  align-items: center;
+}
+
 .two-col--narrow-left {
   grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
 }
@@ -1053,20 +1194,44 @@ textarea:focus {
   background-color: #efebe1;
   border-top: 1px solid rgba(24, 20, 16, 0.06);
   border-bottom: 1px solid rgba(24, 20, 16, 0.06);
+  padding: clamp(64px, 8vw, 96px) clamp(20px, 4.5vw, 40px);
+}
+
+.section--domaines .section-head {
+  margin-bottom: clamp(26px, 3.2vw, 36px);
+}
+
+.section--domaines .section-head h2 {
+  padding-bottom: clamp(14px, 2.2vw, 26px);
+}
+
+.section--domaines .card-grid .card {
+  background: rgba(245, 240, 232, 0.78);
+  border-color: rgba(24, 20, 16, 0.11);
 }
 
 .domaines-hero-media {
-  margin-bottom: 14px;
+  margin: clamp(8px, 1.5vw, 16px) 0 clamp(22px, 3vw, 32px);
+}
+
+.section--domaines .domaines-hero-media .media__img {
+  min-height: clamp(360px, 52vw, 560px);
+  height: clamp(360px, 52vw, 560px);
+  max-height: none;
+  object-fit: cover;
 }
 
 .domaines-intro {
-  margin: clamp(18px, 2.5vw, 24px) 0 0;
+  margin: clamp(32px, 4.2vw, 48px) auto clamp(28px, 3.5vw, 40px);
   max-width: 80ch;
   color: var(--muted);
+  text-align: center;
 }
 
 .domaines-cta {
   margin-top: 18px;
+  display: flex;
+  justify-content: center;
 }
 
 .pour-qui-cta {
@@ -1201,18 +1366,42 @@ textarea:focus {
   padding: 18px;
 }
 
+#contact .section-head {
+  text-align: center;
+}
+
+#contact .section-head h2 {
+  text-align: center;
+}
+
+#contact .section-head p {
+  max-width: 62ch;
+  margin-inline: auto;
+  text-align: center;
+}
+
 .contact-form {
   max-width: 720px;
   margin-inline: auto;
 }
 
-.contact-item h3 {
-  margin: 0 0 8px;
+.contact-form__actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 6px;
 }
 
-.fine {
-  color: var(--muted2);
-  font-size: 0.95rem;
+.contact-form__actions .fine {
+  flex: 1 1 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.contact-item h3 {
+  margin: 0 0 8px;
 }
 
 .site-footer {
@@ -1283,6 +1472,31 @@ textarea:focus {
   .contact-grid {
     grid-template-columns: 1fr;
   }
+
+  #modalites .modalites-shell {
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 4vw, 32px);
+    padding-left: clamp(16px, 4vw, 24px);
+    padding-right: clamp(16px, 4vw, 24px);
+  }
+
+  #modalites .modalites-body {
+    padding-top: clamp(28px, 5vw, 48px);
+  }
+
+  #modalites .modalites-media {
+    border-radius: var(--radius);
+    border-left: 1px solid rgba(24, 20, 16, 0.1);
+  }
+
+  #modalites .modalites-media .media__img {
+    min-height: clamp(240px, 52vw, 340px);
+    max-height: none;
+  }
+
+  #temoignages .two-col--narrow-left {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Tablet: switch to burger earlier so everything is visible */
@@ -1339,6 +1553,10 @@ textarea:focus {
 
   .section {
     padding: 50px 0;
+  }
+
+  .section--domaines {
+    padding: clamp(48px, 9vw, 76px) clamp(14px, 4vw, 24px);
   }
 
   #espace.section {

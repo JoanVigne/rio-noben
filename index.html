@@ -43,7 +43,6 @@
             <a href="#pour-qui">Pour qui ?</a>
             <a href="#approche">Mon approche</a>
             <a href="#qui">Qui suis je ?</a>
-            <a href="#accompagnements">Accompagnements</a>
             <a href="#modalites">Modalités</a>
             <a href="#temoignages">Témoignages</a>
             <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
@@ -276,62 +275,35 @@
         </div>
       </section>
 
-      <section id="accompagnements" class="section">
-        <div class="container">
-          <div class="section-head">
-            <h2>Accompagnements</h2>
-            <p>Pour dépasser vos blocages et retrouver une vie alignée.</p>
-          </div>
-          <div class="card">
-            <p>Chaque situation est unique. Nous avançons à votre rythme, dans un cadre d’écoute bienveillante.</p>
-            <div style="margin-top: 14px">
-              <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="modalites" class="section section--sage">
-        <div class="container">
-          <div class="section-head">
-            <h2>Venir au cabinet ou en visio</h2>
-            <p>Durée, lieu, tarif et rythme.</p>
+        <div class="modalites-shell">
+          <div class="modalites-media media card" aria-label="Illustration">
+            <img class="media__img" src="./assets/8.avif" alt="" loading="lazy" />
           </div>
 
-          <div class="two-col">
-            <div class="media card" aria-label="Illustration">
-              <img class="media__img" src="./assets/8.avif" alt="" loading="lazy" />
+          <div class="modalites-body">
+            <div class="section-head modalites-head">
+              <h2>Venir au cabinet ou en visio</h2>
             </div>
 
-            <div>
-              <div class="card-grid">
-                <div class="card">
-                  <h3>Durée</h3>
-                  <p>Les séances durent 1 heure, un temps suspendu pour explorer vos besoins en profondeur.</p>
-                </div>
-                <div class="card">
-                  <h3>Lieu</h3>
-                  <p>
-                    Je vous accueille au 11 rue du Faubourg de Nimes à Montpellier (proche Corum) ou en visio
-                    (téléphone/vidéo) selon votre préférence.
-                  </p>
-                </div>
-                <div class="card">
-                  <h3>Tarif</h3>
-                  <p>
-                    Séance à 60€. Une tarification consciente est possible pour les budgets serrés, parlons-en
-                    librement.
-                  </p>
-                </div>
-              </div>
+            <div class="modalites-copy">
+              <p>
+                <strong>Durée :</strong> Les séances durent 1 heure, un temps suspendu pour explorer vos besoins en
+                profondeur.
+              </p>
+              <p>
+                <strong>Lieu :</strong> Je vous accueille au 11 rue du Faubourg de Nimes à Montpellier (proche Corum) ou
+                en visio (téléphone/vidéo) selon votre préférence.
+              </p>
+              <p>
+                <strong>Tarif :</strong> Séance à 60€. Une tarification consciente est possible pour les budgets serrés,
+                parlons-en librement.
+              </p>
+              <p><strong>Rythme :</strong> De façon ponctuelle ou continue, selon vos besoins.</p>
+            </div>
 
-              <div style="margin-top: 16px" class="callout">
-                <strong>Rythme</strong>
-                <p>De façon ponctuelle ou continue, selon vos besoins.</p>
-                <div style="margin-top: 14px">
-                  <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
-                </div>
-              </div>
+            <div class="modalites-cta">
+              <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
             </div>
           </div>
         </div>
@@ -339,17 +311,19 @@
 
       <section id="temoignages" class="section">
         <div class="container">
-          <div class="section-head">
+          <div class="section-head temoignages-head">
             <h2>Témoignages</h2>
             <p>Quelques retours de personnes accompagnées dans leur cheminement personnel et leurs transitions de vie.</p>
           </div>
 
           <div class="two-col two-col--narrow-left">
-            <div class="media card media--sm" aria-label="Illustration">
-              <img class="media__img" src="./assets/9.avif" alt="" loading="lazy" />
+            <div class="temoignages-aside">
+              <div class="media card media--sm temoignages-photo" aria-label="Illustration">
+                <img class="media__img" src="./assets/9.avif" alt="" loading="lazy" />
+              </div>
             </div>
 
-            <div class="card">
+            <div class="card temoignages-reviews">
               <div id="js_widget" class="ie-common-widget ie-reviews"></div>
               <script
                 type="text/javascript"
@@ -358,7 +332,16 @@
             </div>
           </div>
 
-          <div style="margin-top: 16px">
+          <div class="temoignages-stamp">
+            <img
+              src="https://www.psychologue.net/stamp.xpng?com=476935&amp;v=10"
+              alt="Rio Noben"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="temoignages-cta">
             <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
           </div>
         </div>
@@ -371,7 +354,13 @@
             <p>N’hésitez pas à m’écrire ici.</p>
           </div>
 
-          <form class="contact-item form contact-form" data-contact-form>
+          <form
+            class="contact-item form contact-form"
+            data-contact-form
+            action="https://formspree.io/f/xvzvvllg"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="Message depuis le site — Rio Noben" />
             <h3>Message</h3>
             <div class="field">
               <label for="name">Nom<span aria-hidden="true">*</span></label>
@@ -385,9 +374,9 @@
               <label for="message">Message<span aria-hidden="true">*</span></label>
               <textarea id="message" name="message" rows="6" required></textarea>
             </div>
-            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+            <div class="contact-form__actions">
               <button class="button button--primary" type="submit">Envoyer</button>
-              <p class="fine" data-form-status role="status" aria-live="polite" style="margin: 0"></p>
+              <p class="fine" data-form-status role="status" aria-live="polite"></p>
             </div>
           </form>
         </div>
