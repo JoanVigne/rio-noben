@@ -54,69 +54,67 @@
 
     <main id="main">
       <section class="hero" id="accueil">
-          <div class="hero-banner card hero-banner--full" aria-label="Bannière">
-            <img class="hero-banner__img" src="./assets/1.avif" alt="" loading="eager" />
-            <div class="hero-banner__overlay">
-              <div class="container">
-                <p class="pill">Montpellier • En cabinet ou en ligne</p>
-                <h1 class="hero-title">Rio Noben, psychothérapie humaniste</h1>
-                <h2 class="hero-subtitle hero-subtitle--title">Accompagnement psychologique à Montpellier</h2>
-                <p class="hero-subtitle">
+        <div class="hero-intro">
+          <div class="container">
+            <h1 class="hero-intro__title">Rio Noben</h1>
+            <h2 class="hero-intro__subtitle">Accompagnement psychologique sur Montpellier</h2>
+          </div>
+        </div>
+
+        <div class="hero-banner-wrap hero-banner--full" aria-label="Bannière">
+          <img class="hero-banner__img" src="./assets/1.avif" alt="" loading="eager" />
+          <div class="hero-banner__card-wrap">
+            <div class="container hero-banner__card-inner">
+              <div class="hero-floating-card">
+                <p>
                   Un accompagnement thérapeutique sécurisant à Montpellier pour adultes, jeunes adultes et couples.
                 </p>
-                <p class="hero-subtitle">
+                <p>
                   Séances de 1h en cabinet ou en ligne, pour dépasser vos blocages et retrouver une vie alignée.
                 </p>
-                <div class="hero-actions">
+                <div class="hero-floating-card__cta">
                   <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
-                  <a class="button button--ghost" href="#espace">Un espace de parole</a>
                 </div>
               </div>
-            </div>
-          </div>
-      </section>
-
-      <section id="espace" class="section">
-        <div class="container">
-          <div class="two-col">
-            <div>
-              <div class="section-head">
-                <h2>Un espace de parole et de changement</h2>
-                <p>Vous traversez une période de doutes, de tensions ou de flou relationnel ?</p>
-              </div>
-
-              <div class="card">
-                <p>
-                  Je vous propose un espace d'écoute sécurisé à Montpellier pour explorer vos difficultés sans jugement.
-                  À travers "l'Approche Centrée sur la Personne" (ACP) je vous aide à identifier vos blocages,
-                  mobiliser vos ressources et ainsi redevenir pleinement acteur.ice de votre vie.
-                </p>
-                <p>
-                  Que vous veniez seul ou en couple, nous avançons à votre rythme vers un quotidien plus serein et
-                  aligné avec vos valeurs.
-                </p>
-                <div style="margin-top: 14px">
-                  <a class="button button--primary" href="#contact">Faire le premier pas</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="media card" aria-label="Illustration">
-              <img class="media__img" src="./assets/2.avif" alt="" loading="lazy" />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="pour-qui" class="section">
+      <section id="espace" class="section section--espace">
+        <div class="container espace">
+          <div class="espace__text">
+            <div class="section-head">
+              <h2>Un espace de parole et de changement</h2>
+              <p>Vous traversez une période de doutes, de tensions ou de flou relationnel ?</p>
+            </div>
+            <p>
+              Je vous propose un espace d'écoute sécurisé à Montpellier pour explorer vos difficultés sans jugement.
+              À travers "l'Approche Centrée sur la Personne" (ACP) je vous aide à identifier vos blocages,
+              mobiliser vos ressources et ainsi redevenir pleinement acteur.ice de votre vie.
+            </p>
+            <p>
+              Que vous veniez seul ou en couple, nous avançons à votre rythme vers un quotidien plus serein et
+              aligné avec vos valeurs.
+            </p>
+            <div class="espace__cta">
+              <a class="button button--primary" href="#contact">Faire le premier pas</a>
+            </div>
+          </div>
+          <div class="espace__media media media--sage" aria-label="Illustration">
+            <img class="media__img" src="./assets/2.avif" alt="" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section id="pour-qui" class="section section--pour-qui">
         <div class="container">
-          <div class="section-head">
+          <div class="section-head section-head--center">
             <h2>Un accompagnement pour chaque parcours</h2>
-            <p>Pour vous, seul.e ou en couple :</p>
           </div>
 
-          <div class="two-col">
-            <div class="card card--mint">
+          <div class="two-col two-col--pour-qui">
+            <div class="card card--sage">
               <img class="card__media" src="./assets/3.avif" alt="" loading="lazy" />
               <h3>Pour vous, seul.e ou en couple :</h3>
               <ul class="list">
@@ -126,7 +124,7 @@
               </ul>
             </div>
 
-            <div class="card card--mint">
+            <div class="card card--sage">
               <img class="card__media" src="./assets/4.avif" alt="" loading="lazy" />
               <h3>Une main tendue pour traverser :</h3>
               <ul class="list">
@@ -138,99 +136,109 @@
             </div>
           </div>
 
-          <div style="margin-top: 16px">
-            <a class="button button--primary" href="#contact">Prendre rendez-vous</a>
+          <div class="pour-qui-cta">
+            <a class="button button--primary" href="#contact">Faire le premier pas en douceur</a>
           </div>
         </div>
       </section>
 
-      <section id="approche" class="section section--alt">
+      <section id="approche" class="section section--sage">
         <div class="container">
-          <div class="two-col">
-            <div>
-              <div class="section-head">
-                <h2>L’Approche Centrée sur la Personne</h2>
-                <p>
-                  Ma pratique s’appuie sur l'Approche Centrée sur la Personne (ACP), une méthode issue du courant
-                  psychologique humaniste et validée par la recherche scientifique.
-                </p>
-              </div>
-
-              <div class="card">
-                <p>
-                  Cette approche met votre ressenti au cœur de la séance et s’appuie sur l’idée que chacun possède en
-                  lui les ressources pour évoluer et trouver ses propres solutions.
-                </p>
-                <p>Elle repose sur trois piliers fondamentaux pour vous rassurer et vous soutenir :</p>
+          <div class="two-col approche-split">
+            <div class="approche-copy">
+              <h2>L’Approche Centrée sur la Personne</h2>
+              <p>
+                Ma pratique s’appuie sur l’<strong>Approche Centrée sur la Personne</strong> (ACP), une méthode issue du
+                courant psychologique humaniste et validée par la recherche scientifique.
+              </p>
+              <p>
+                Cette approche met votre ressenti au cœur de la séance et s’appuie sur l’idée que chacun possède en lui
+                les ressources pour évoluer et trouver ses propres solutions.
+              </p>
+              <p>Elle repose sur trois piliers fondamentaux pour vous rassurer et vous soutenir :</p>
+              <ul class="list list--approche">
+                <li>
+                  <strong>Une écoute authentique</strong> : Un espace où vous pouvez vous exprimer librement, sans
+                  crainte d’être jugé.
+                </li>
+                <li>
+                  <strong>Un cadre sécurisant</strong> : La confidentialité et la bienveillance sont les socles de
+                  chaque rencontre, pour que vous puissiez explorer vos émotions et vos questionnements en toute
+                  sécurité.
+                </li>
+                <li>
+                  <strong>Votre rythme</strong> : Nous avançons à votre allure, en mobilisant vos propres ressources pour
+                  clarifier votre situation et retrouver un équilibre aligné avec ce qui compte vraiment pour vous.
+                </li>
+              </ul>
+              <div class="approche-cta">
+                <a class="button button--primary" href="#contact">Commencer votre accompagnement</a>
               </div>
             </div>
 
-            <div class="media card" aria-label="Illustration">
+            <div class="media" aria-label="Illustration">
               <img class="media__img" src="./assets/5.avif" alt="" loading="lazy" />
             </div>
           </div>
-
-          <div class="card-grid" style="margin-top: 14px">
-            <div class="card">
-              <h3>Une écoute authentique</h3>
-              <p>Un espace où vous pouvez vous exprimer librement, sans crainte d’être jugé.</p>
-            </div>
-            <div class="card">
-              <h3>Un cadre sécurisant</h3>
-              <p>
-                La confidentialité et la bienveillance sont les socles de chaque rencontre, pour explorer vos émotions
-                en toute sécurité.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Votre rythme</h3>
-              <p>
-                Nous avançons à votre allure, en mobilisant vos propres ressources pour clarifier votre situation et
-                retrouver un équilibre aligné avec ce qui compte vraiment pour vous.
-              </p>
-            </div>
-          </div>
-
-          <div style="margin-top: 16px">
-            <a class="button button--primary" href="#contact">Commencer votre accompagnement</a>
-          </div>
         </div>
       </section>
 
-      <section id="qui" class="section section--bg-qui">
-        <div class="container">
-          <div class="two-col">
-            <div>
-              <div class="section-head">
-                <h2>Qui suis je ?</h2>
-                <p>
-                  Je suis Rio Noben, thérapeute à Montpellier, spécialisé dans l’Approche Centrée sur la Personne.
-                </p>
+      <section class="section section--qui">
+        <div id="qui" class="qui-card card container">
+            <div class="qui-card__text">
+              <div class="qui-card__portrait" aria-label="Portrait">
+                <img
+                  class="qui-card__portrait-img"
+                  src="./assets/profile.avif"
+                  alt="Portrait de Rio Noben"
+                  loading="lazy"
+                />
               </div>
-              <p class="fine">J’accompagne les personnes qui traversent des périodes de doute, de souffrance ou de transition, dans un cadre d’écoute bienveillante et sans jugement.</p>
-              <p class="fine">Mon intérêt pour l’accompagnement psychologique est né d’un parcours personnel de recherche et de compréhension de l’être humain.</p>
-              <p class="fine">Au fil des années, j’ai exploré différentes disciplines liées à la psychologie, aux sciences sociales et à la philosophie, avec une question centrale : comment les personnes évoluent-elles et trouvent-elles leur propre équilibre ?</p>
-              <p class="fine">Ce chemin m’a progressivement amené à développer une attention particulière à la qualité du lien, à l’écoute et à la présence.</p>
-              <p class="fine">Mon cercle relationnel, mes expériences et mes rencontres ont profondément nourri cette sensibilité.</p>
-              <p class="fine">Ils m’ont appris l’importance de la bienveillance, de l’écoute authentique et de l’accueil de l’autre dans sa singularité.</p>
-              <p class="fine">Aujourd’hui, ces expériences constituent le socle de ma posture thérapeutique.</p>
-              <p class="fine">Dans les séances, je m’efforce d’être pleinement présent et authentique. Il est essentiel pour moi de ne pas jouer un rôle, mais de rencontrer la personne telle qu’elle est, dans une relation humaine simple, respectueuse et sincère.</p>
-            </div>
-            <div class="media card" aria-label="Portrait">
-              <img class="media__img" src="./assets/profile.avif" alt="Portrait" loading="lazy" />
+              <h2 class="qui-title">Qui suis je ?</h2>
+              <p>
+                Je suis Rio Noben, thérapeute à Montpellier, spécialisé dans l’Approche Centrée sur la Personne.
+              </p>
+              <p>
+                J’accompagne les personnes qui traversent des périodes de doute, de souffrance ou de transition, dans un
+                cadre d’écoute bienveillante et sans jugement.
+              </p>
+              <p>
+                Mon intérêt pour l’accompagnement psychologique est né d’un parcours personnel de recherche et de
+                compréhension de l’être humain.
+              </p>
+              <p>
+                Au fil des années, j’ai exploré différentes disciplines liées à la psychologie, aux sciences sociales et à
+                la philosophie, avec une question centrale : comment les personnes évoluent-elles et trouvent-elles leur
+                propre équilibre ?
+              </p>
+              <p>
+                Ce chemin m’a progressivement amené à développer une attention particulière à la qualité du lien, à
+                l’écoute et à la présence.
+              </p>
+              <p>
+                Mon cercle relationnel, mes expériences et mes rencontres ont profondément nourri cette sensibilité.
+              </p>
+              <p>
+                Ils m’ont appris l’importance de la bienveillance, de l’écoute authentique et de l’accueil de l’autre dans
+                sa singularité.
+              </p>
+              <p>
+                Aujourd’hui, ces expériences constituent le socle de ma posture thérapeutique.
+              </p>
+              <div class="qui-card__cta">
+                <a class="button button--primary" href="#contact">Faisons connaissance</a>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
-      <section id="domaines" class="section section--alt">
+      <section id="domaines" class="section section--domaines">
         <div class="container">
           <div class="section-head">
             <h2>Domaines d'intervention</h2>
-            <p>Chaque situation est unique. Je vous propose un espace sécurisé pour en explorer ensemble les possibles.</p>
           </div>
 
-          <div class="media card" aria-label="Illustration" style="margin-bottom: 14px">
+          <div class="media card domaines-hero-media" aria-label="Illustration">
             <img class="media__img" src="./assets/7.avif" alt="" loading="lazy" />
           </div>
           <div class="card-grid">
@@ -259,7 +267,10 @@
               <p>Intégrer les épreuves, surmonter une crise de transition et aligner votre chemin avec vos valeurs.</p>
             </div>
           </div>
-          <div style="margin-top: 16px">
+          <p class="domaines-intro">
+            Chaque situation est unique. Je vous propose un espace sécurisé pour en explorer ensemble les possibles.
+          </p>
+          <div class="domaines-cta">
             <a class="button button--primary" href="#contact">Prendre un premier rendez-vous</a>
           </div>
         </div>
@@ -280,7 +291,7 @@
         </div>
       </section>
 
-      <section id="modalites" class="section section--alt">
+      <section id="modalites" class="section section--sage">
         <div class="container">
           <div class="section-head">
             <h2>Venir au cabinet ou en visio</h2>
