@@ -20,12 +20,13 @@
   </head>
 
   <body>
+    <div id="page-top" tabindex="-1"></div>
     <a class="skip" href="#main">Aller au contenu</a>
 
     <header id="top" class="site-header">
       <div class="container">
         <div class="nav">
-          <a href="#top" aria-label="Retour en haut" class="brand">
+          <a href="#page-top" aria-label="Retour en haut" class="brand">
             <img
               class="logo"
               alt="Rio Noben"
@@ -271,7 +272,7 @@
       <section class="section section--qui">
         <div id="qui" class="qui-card card container">
             <div class="qui-card__text">
-              <div class="qui-card__portrait" aria-label="Portrait">
+              <div class="qui-card__portrait qui-card__portrait--desktop" aria-label="Portrait">
                 <img
                   class="qui-card__portrait-img"
                   src="./assets/profile.avif"
@@ -280,6 +281,14 @@
                 />
               </div>
               <h2 class="qui-title">Qui suis je ?</h2>
+              <div class="qui-card__portrait qui-card__portrait--mobile" aria-label="Portrait">
+                <img
+                  class="qui-card__portrait-img"
+                  src="./assets/profile.avif"
+                  alt="Portrait de Rio Noben"
+                  loading="lazy"
+                />
+              </div>
               <p>
                 Je suis Rio Noben, thérapeute à Montpellier, spécialisé dans l’Approche Centrée sur la Personne.
               </p>

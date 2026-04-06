@@ -664,7 +664,7 @@ button.button {
 /* Largeur / marge basées sur le bandeau (100%), pas 100vw — évite le débordement avec barre de défilement */
 .hero-banner__card-inner.container {
   width: min(calc(100% - 16px), var(--max));
-  margin-left: max(0px, calc((100% - min(calc(100% - 16px), var(--max))) / 4 - 18px));
+  margin-left: max(0px, calc((100% - min(calc(100% - 16px), var(--max))) / 4 - 30px));
   margin-right: auto;
   padding-left: 0;
   padding-right: 0;
@@ -809,8 +809,8 @@ button.button {
   pointer-events: none;
 }
 
-/* ~70 % du portrait dans le bloc #dfdace, ~30 % qui dépasse (translateX 30 %) */
-#qui .qui-card__text .qui-card__portrait {
+/* Desktop portrait: ~70 % du portrait dans le bloc #dfdace, ~30 % qui dépasse */
+#qui .qui-card__text .qui-card__portrait--desktop {
   position: absolute;
   top: -30px;
   right: -10px;
@@ -827,6 +827,11 @@ button.button {
   z-index: 2;
   transform: translateX(36%);
   transform-origin: center center;
+}
+
+/* Mobile portrait is hidden by default (desktop/tablet keep the floating one) */
+#qui .qui-card__text .qui-card__portrait--mobile {
+  display: none;
 }
 
 #qui .qui-card__portrait-img {
@@ -865,6 +870,20 @@ button.button {
   margin-top: 20px;
 }
 
+@media (max-width: 900px) {
+  /* Swap portraits (phone-ish widths, including landscape) */
+  #qui .qui-card__text .qui-card__portrait--desktop {
+    display: none;
+  }
+
+  #qui .qui-card__text .qui-card__portrait--mobile {
+    display: block;
+    position: static;
+    inset: auto;
+    transform: none;
+  }
+}
+
 @media (max-width: 720px) {
   #qui.qui-card.card.container {
     display: flex;
@@ -889,13 +908,11 @@ button.button {
     padding-right: clamp(158px, 54vw, 248px);
   }
 
-  #qui .qui-card__text .qui-card__portrait {
-    top: -28px;
-    right: -8px;
-    width: min(378px, 86vw);
-    max-width: min(378px, 86vw);
-    transform: translateX(32%);
-    transform-origin: center center;
+  /* Ensure NO absolute positioning on the phone portrait */
+  #qui .qui-card__text .qui-card__portrait--mobile {
+    position: static;
+    inset: auto;
+    transform: none;
   }
 }
 
@@ -2155,6 +2172,7 @@ textarea:focus {
   /* Qui suis-je: put spacing on the title instead of section wrapper */
   #qui .qui-title {
     padding-top: 22px;
+    margin-bottom: 8px;
   }
 
   .hero-banner__img {
@@ -2167,6 +2185,7 @@ textarea:focus {
     inset: auto;
     display: block;
     pointer-events: auto;
+    padding: 0;
   }
 
   .hero-banner__card-inner,
@@ -2174,8 +2193,10 @@ textarea:focus {
     width: 100%;
     margin: 0;
     padding: 0;
-    display: block;
+    display: flex;
+    justify-content: center;
     pointer-events: auto;
+    box-sizing: border-box;
   }
 
   .hero-floating-card {
@@ -2185,6 +2206,17 @@ textarea:focus {
     margin: 0;
     border-radius: 0;
     padding: clamp(22px, 5vw, 34px);
+    text-align: center;
+  }
+
+  /* Keep card aligned with page gutters on phone */
+  .hero-banner__card-inner.container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: max(env(safe-area-inset-left, 0px), clamp(12px, 4vw, 20px));
+    padding-right: max(env(safe-area-inset-right, 0px), clamp(12px, 4vw, 20px));
   }
 
   .hero-floating-card p {
@@ -2293,15 +2325,14 @@ textarea:focus {
     flex-direction: column;
   }
 
-  #qui .qui-card__text .qui-card__portrait {
-    position: static;
-    inset: auto;
-    transform: none;
+  /* Qui suis-je: title -> portrait -> text (phone only) */
+  #qui .qui-card__text .qui-card__portrait--mobile {
     width: 80%;
     max-width: 80%;
-    margin: 18px auto 0;
-    order: 99;
+    margin: 0 auto 12px;
     aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
   }
 
   #qui .qui-card__portrait-img {
