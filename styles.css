@@ -431,6 +431,7 @@ a:hover {
   color: var(--muted);
   cursor: pointer;
   transition: background 120ms ease, color 120ms ease;
+  text-decoration: none;
 }
 
 .header-contact-btn:hover,
@@ -495,6 +496,7 @@ a:hover {
   font-size: var(--fs-0);
   line-height: 1.45;
   color: var(--text);
+  user-select: text;
 }
 
 .header-popover p:last-child {
@@ -783,10 +785,10 @@ button.button {
   background: transparent;
   border-color: rgba(24, 20, 16, 0.1);
   border-radius: 0;
-  padding: clamp(40px, 6vw, 56px);
-  padding-right: clamp(40px, 6vw, 56px);
-  padding-top: calc(clamp(56px, 8vw, 88px) + 50px);
-  padding-bottom: calc(clamp(48px, 7vw, 80px) + 50px);
+  padding: clamp(18px, 3.2vw, 32px);
+  padding-right: clamp(18px, 3.2vw, 32px);
+  padding-top: calc(clamp(32px, 4.5vw, 56px) + 24px);
+  padding-bottom: calc(clamp(24px, 4vw, 48px) + 24px);
 }
 
 /* Couvre toute la largeur du bloc (couche plus large + centrée) pour éviter les bandes sur les côtés */
@@ -813,9 +815,9 @@ button.button {
 #qui .qui-card__text .qui-card__portrait--desktop {
   position: absolute;
   top: -30px;
-  right: -10px;
-  width: clamp(332px, 47vw, 482px);
-  max-width: min(482px, calc(100% - 12px));
+  right: -22px;
+  width: clamp(420px, 56vw, 600px);
+  max-width: min(600px, calc(100% - 12px));
   aspect-ratio: 1;
   padding: 0;
   margin: 0;
@@ -825,7 +827,7 @@ button.button {
   background: transparent;
   box-shadow: none;
   z-index: 2;
-  transform: translateX(36%);
+  transform: translateX(44%);
   transform-origin: center center;
 }
 
@@ -851,8 +853,8 @@ button.button {
   width: 74%;
   max-width: 74%;
   overflow: visible;
-  padding: clamp(38px, 6.2vw, 62px) clamp(288px, 34vw, 380px) clamp(38px, 6.2vw, 62px)
-    clamp(48px, 7.4vw, 78px);
+  padding: clamp(22px, 4vw, 42px) clamp(248px, 29vw, 340px) clamp(22px, 4vw, 42px)
+    clamp(32px, 5.5vw, 56px);
   background: #dfdace;
   border-radius: var(--radius-sm);
   color: #000;
@@ -892,9 +894,9 @@ button.button {
     max-width: 100%;
     margin-inline: 0;
     border-radius: 0;
-    padding: clamp(32px, 7vw, 52px) clamp(18px, 4vw, 28px);
-    padding-top: calc(clamp(48px, 11vw, 80px) + 50px);
-    padding-bottom: calc(clamp(40px, 9vw, 64px) + 50px);
+    padding: clamp(16px, 4vw, 28px) clamp(12px, 3vw, 18px);
+    padding-top: calc(clamp(28px, 6vw, 44px) + 24px);
+    padding-bottom: calc(clamp(22px, 5vw, 36px) + 24px);
     overflow: hidden;
   }
 
@@ -903,9 +905,9 @@ button.button {
     margin-right: 0;
     width: calc(100% - 30px);
     max-width: calc(100% - 30px);
-    padding: clamp(22px, 6vw, 38px);
-    padding-left: clamp(28px, 7vw, 44px);
-    padding-right: clamp(158px, 54vw, 248px);
+    padding: clamp(14px, 4vw, 26px);
+    padding-left: clamp(18px, 5vw, 32px);
+    padding-right: clamp(96px, 38vw, 160px);
   }
 
   /* Ensure NO absolute positioning on the phone portrait */
@@ -2171,7 +2173,7 @@ textarea:focus {
 
   /* Qui suis-je: put spacing on the title instead of section wrapper */
   #qui .qui-title {
-    padding-top: 22px;
+    padding-top: 14px;
     margin-bottom: 8px;
   }
 
@@ -2311,15 +2313,15 @@ textarea:focus {
 
   #qui.qui-card.card.container {
     background: transparent;
-    padding-top: clamp(28px, 8vw, 44px);
-    padding-bottom: clamp(28px, 8vw, 44px);
+    padding-top: clamp(12px, 4vw, 24px);
+    padding-bottom: clamp(12px, 4vw, 24px);
   }
 
   #qui > div.qui-card__text {
     margin: 0;
     width: 100%;
     max-width: 100%;
-    padding: clamp(18px, 5vw, 28px);
+    padding: clamp(10px, 3.5vw, 18px);
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
@@ -2327,9 +2329,9 @@ textarea:focus {
 
   /* Qui suis-je: title -> portrait -> text (phone only) */
   #qui .qui-card__text .qui-card__portrait--mobile {
-    width: 80%;
-    max-width: 80%;
-    margin: 0 auto 12px;
+    width: 96%;
+    max-width: 96%;
+    margin: 0 0 12px auto;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: var(--radius-sm);
