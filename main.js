@@ -25,9 +25,23 @@
     menu.addEventListener("click", (e) => {
       if (e.target && e.target.tagName === "A") setOpen(false);
     });
+    document.addEventListener("click", (e) => {
+      if (!menu.classList.contains("is-open")) return;
+      const t = e.target;
+      if (!(t instanceof Node)) return;
+      if (burger.contains(t) || menu.contains(t)) return;
+      setOpen(false);
+    });
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") setOpen(false);
     });
+    window.addEventListener(
+      "resize",
+      () => {
+        if (window.matchMedia("(min-width: 1101px)").matches) setOpen(false);
+      },
+      { passive: true }
+    );
   }
 
   if (form) {

@@ -46,6 +46,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: clamp(84px, 11vw, 104px);
   font-family: var(--font-sans);
   width: 100%;
   max-width: 100%;
@@ -142,12 +143,13 @@ a:hover {
   width: min(calc(100% - 24px), var(--max));
 }
 
-/* Header: pleine largeur écran, gouttières latérales uniquement */
+/* Header: pleine largeur écran, gouttières latérales + encoches (safe-area) */
 .site-header .container {
   width: 100%;
   max-width: none;
   margin-inline: 0;
-  padding-inline: clamp(14px, 4vw, 40px);
+  padding-left: max(env(safe-area-inset-left, 0px), clamp(14px, 4vw, 40px));
+  padding-right: max(env(safe-area-inset-right, 0px), clamp(14px, 4vw, 40px));
   box-sizing: border-box;
 }
 
@@ -203,7 +205,7 @@ a:hover {
 }
 
 .logo {
-  height: 40px;
+  height: 32px;
   width: auto;
   display: block;
   filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
@@ -229,14 +231,17 @@ a:hover {
 .menu {
   display: flex;
   align-items: center;
+  /* Grows to the right edge; .menu-links shares width between nav items (not empty margin) */
   flex: 1 1 auto;
-  justify-content: space-between;
-  gap: clamp(4px, 1.2vw, 14px);
+  justify-content: flex-start;
+  gap: clamp(12px, 1.8vw, 24px);
   flex-wrap: nowrap;
   white-space: nowrap;
   min-width: 0;
   overflow: visible;
-  margin-left: clamp(10px, 2vw, 22px);
+  margin-left: clamp(8px, 1.5vw, 18px);
+  /* Horizontal breathing room for the nav row only (not the whole header strip) */
+  padding-inline: clamp(12px, 2vw, 28px);
 }
 
 .menu::-webkit-scrollbar {
@@ -244,35 +249,269 @@ a:hover {
   height: 0;
 }
 
-.menu a {
+.menu-links {
+  display: flex;
+  align-items: center;
+  /* Grow + distribute: extra width becomes even spacing between items (fluid header) */
+  flex: 1 1 auto;
+  justify-content: space-between;
+  gap: clamp(4px, 0.7vw, 16px);
+  flex-wrap: nowrap;
+  min-width: 0;
+  /* visible: required so .menu-dropdown panel (position:absolute) is not clipped */
+  overflow: visible;
+}
+
+.menu-aside {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.9vw, 10px);
+  flex-shrink: 0;
+}
+
+.menu-links > a,
+.menu-dropdown__trigger {
+  box-sizing: border-box;
   height: 40px;
   padding: 0 6px;
   border-radius: 12px;
   color: var(--muted);
   text-decoration: none;
   white-space: nowrap;
+  font-family: var(--font-sans);
   font-size: var(--fs-0);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: normal;
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
+  transition: background 120ms ease, color 120ms ease;
 }
 
-.menu a:hover {
+.menu-links > a:hover,
+.menu-dropdown:hover > .menu-dropdown__trigger,
+.menu-dropdown__trigger:hover {
   background: rgba(24, 20, 16, 0.04);
   color: var(--text);
 }
 
-.site-header .menu a.button--primary,
-.site-header .menu .button.button--primary {
+.menu-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+}
+
+/* Invisible hover bridge: keeps dropdown open when moving cursor toward the panel */
+@media (min-width: 1101px) {
+  .menu-dropdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 100%;
+    height: 14px;
+    z-index: 119;
+  }
+}
+
+.menu-dropdown__trigger {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-dropdown__trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+.menu-dropdown__panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: min(300px, calc(100vw - 40px));
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 6px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(24, 20, 16, 0.1);
+  box-shadow: 0 16px 44px rgba(24, 20, 16, 0.14);
+  z-index: 120;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 120ms ease, visibility 120ms ease;
+}
+
+.menu-dropdown:hover .menu-dropdown__panel,
+.menu-dropdown:focus-within .menu-dropdown__panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.menu-dropdown__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  min-height: auto;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: var(--fs-0);
+  font-weight: inherit;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.menu-dropdown__item:hover {
+  background: rgba(24, 20, 16, 0.06);
+  color: var(--text);
+}
+
+.menu-dropdown__item-title {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.menu-dropdown__item-desc {
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.menu-dropdown__item:hover .menu-dropdown__item-desc {
+  color: var(--muted);
+}
+
+.site-header .menu-aside a.button--primary,
+.site-header .menu-aside .button.button--primary {
   background: #e67e6b;
   border-color: rgba(200, 95, 78, 0.55);
   color: #fff;
 }
 
-.site-header .menu a.button--primary:hover,
-.site-header .menu .button.button--primary:hover {
+.site-header .menu-aside a.button--primary:hover,
+.site-header .menu-aside .button.button--primary:hover {
   background: #d96a56;
   border-color: rgba(180, 80, 65, 0.6);
   color: #fff;
+}
+
+.header-contact-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.header-contact-trigger {
+  position: relative;
+}
+
+.header-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.header-contact-btn:hover,
+.header-contact-trigger:hover .header-contact-btn,
+.header-contact-trigger:focus-within .header-contact-btn {
+  background: rgba(24, 20, 16, 0.06);
+  color: var(--text);
+}
+
+.header-contact-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+.header-contact-btn svg {
+  flex-shrink: 0;
+}
+
+.header-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: min(280px, calc(100vw - 40px));
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(24, 20, 16, 0.12);
+  box-shadow: 0 18px 48px rgba(24, 20, 16, 0.16);
+  font-size: var(--fs-0);
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 140ms ease, visibility 140ms ease;
+  z-index: 100;
+}
+
+.header-contact-trigger:hover .header-popover,
+.header-contact-trigger:focus-within .header-popover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.header-contact-trigger:first-child .header-popover {
+  left: 0;
+  transform: none;
+}
+
+.header-contact-trigger:last-child .header-popover {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+.header-popover p {
+  margin: 0 0 8px;
+  font-size: var(--fs-0);
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.header-popover p:last-child {
+  margin-bottom: 0;
+}
+
+.header-popover a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(24, 20, 16, 0.35);
+  text-underline-offset: 3px;
+}
+
+.header-popover a:hover {
+  color: var(--text);
+  text-decoration-color: rgba(24, 20, 16, 0.55);
 }
 
 .button {
@@ -299,7 +538,7 @@ button.button {
   -webkit-appearance: none;
 }
 
-.menu .button {
+.menu-aside .button {
   height: 40px;
   padding: 0 6px;
   font-size: var(--fs-0);
@@ -309,21 +548,27 @@ button.button {
 
 /* Header: tighten spacing before burger breakpoint */
 @media (max-width: 1280px) {
-  .menu a,
-  .menu .button {
+  .menu-links > a,
+  .menu-dropdown__trigger,
+  .menu-aside .button {
     height: 38px;
     padding: 0 6px;
     font-size: 0.9rem;
   }
 
-  .logo {
+  .header-contact-btn {
+    width: 38px;
     height: 38px;
+  }
+
+  .logo {
+    height: 30px;
   }
 }
 
 @media (max-width: 1100px) {
   .logo {
-    height: 36px;
+    height: 28px;
   }
 }
 
@@ -569,8 +814,8 @@ button.button {
   position: absolute;
   top: -30px;
   right: -10px;
-  width: clamp(315px, 44.1vw, 452px);
-  max-width: min(452px, calc(100% - 12px));
+  width: clamp(332px, 47vw, 482px);
+  max-width: min(482px, calc(100% - 12px));
   aspect-ratio: 1;
   padding: 0;
   margin: 0;
@@ -596,14 +841,13 @@ button.button {
   position: relative;
   z-index: 1;
   box-sizing: border-box;
-  margin-left: 0;
+  margin-left: 30px;
   margin-right: 0;
-  margin-inline: 0;
-  width: 82%;
-  max-width: 82%;
+  width: 74%;
+  max-width: 74%;
   overflow: visible;
-  padding: clamp(38px, 6.2vw, 62px) clamp(242px, 29vw, 302px) clamp(38px, 6.2vw, 62px)
-    clamp(38px, 6.2vw, 62px);
+  padding: clamp(38px, 6.2vw, 62px) clamp(288px, 34vw, 380px) clamp(38px, 6.2vw, 62px)
+    clamp(48px, 7.4vw, 78px);
   background: #dfdace;
   border-radius: var(--radius-sm);
   color: #000;
@@ -636,20 +880,20 @@ button.button {
   }
 
   #qui > div.qui-card__text {
-    margin-left: 0;
+    margin-left: 30px;
     margin-right: 0;
-    margin-inline: 0;
-    width: 100%;
-    max-width: 100%;
+    width: calc(100% - 30px);
+    max-width: calc(100% - 30px);
     padding: clamp(22px, 6vw, 38px);
-    padding-right: clamp(138px, 50vw, 218px);
+    padding-left: clamp(28px, 7vw, 44px);
+    padding-right: clamp(158px, 54vw, 248px);
   }
 
   #qui .qui-card__text .qui-card__portrait {
     top: -28px;
     right: -8px;
-    width: min(353px, 82vw);
-    max-width: min(353px, 82vw);
+    width: min(378px, 86vw);
+    max-width: min(378px, 86vw);
     transform: translateX(32%);
     transform-origin: center center;
   }
@@ -677,11 +921,12 @@ button.button {
   display: grid;
   grid-template-columns: minmax(300px, min(48vw, 560px)) minmax(0, 1fr);
   gap: clamp(28px, 4.5vw, 52px);
-  align-items: start;
+  align-items: stretch;
   box-sizing: border-box;
   width: 100%;
   padding-left: 0;
-  padding-right: max(clamp(16px, 4vw, 40px), calc((100vw - min(calc(100vw - 40px), var(--max))) / 2));
+  /* Petite gouttière seulement : la carte peut s’approcher du bord écran (pas l’inset “max-width” du site) */
+  padding-right: max(env(safe-area-inset-right, 0px), clamp(10px, 2vw, 22px));
 }
 
 #modalites .modalites-media {
@@ -690,24 +935,63 @@ button.button {
   border-radius: 0 var(--radius) var(--radius) 0;
   border: 1px solid rgba(24, 20, 16, 0.1);
   border-left: none;
-  align-self: start;
+  align-self: stretch;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 #modalites .modalites-media .media__img {
   display: block;
   width: 100%;
-  height: auto;
+  flex: 1;
   min-height: clamp(300px, 36vw, 460px);
-  max-height: min(560px, 68vh);
+  max-height: none;
+  height: 100%;
   object-fit: cover;
 }
 
 #modalites .modalites-body {
   min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, min(44%, 420px));
+  gap: clamp(22px, 3.5vw, 32px);
+  align-items: stretch;
+  align-content: start;
+  padding-top: clamp(36px, 5vw, 62px);
+  padding-bottom: clamp(28px, 4vw, 48px);
+}
+
+#modalites .modalites-main {
   display: flex;
   flex-direction: column;
   gap: clamp(14px, 2vw, 20px);
-  padding-top: clamp(36px, 5vw, 62px);
+  min-width: 0;
+  justify-content: flex-start;
+}
+
+#modalites .modalites-map {
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid rgba(24, 20, 16, 0.1);
+  background: rgba(255, 255, 255, 0.35);
+  min-height: clamp(260px, 30vw, 360px);
+  max-height: min(560px, 78vh);
+  height: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+#modalites .modalites-map__frame {
+  display: block;
+  width: 100%;
+  flex: 1;
+  min-height: 260px;
+  height: 100%;
+  border: 0;
 }
 
 #modalites .modalites-head.section-head {
@@ -1405,7 +1689,7 @@ textarea:focus {
 }
 
 .site-footer {
-  padding: 36px 0 46px;
+  padding: 36px 0 calc(46px + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid rgba(24, 20, 16, 0.08);
   background: rgba(255, 255, 255, 0.45);
 }
@@ -1481,21 +1765,47 @@ textarea:focus {
   }
 
   #modalites .modalites-body {
+    grid-template-columns: 1fr;
     padding-top: clamp(28px, 5vw, 48px);
+    padding-bottom: 0;
+  }
+
+  #modalites .modalites-map {
+    aspect-ratio: 16 / 11;
+    max-height: 360px;
+    min-height: 220px;
+    height: auto;
+    display: block;
+  }
+
+  #modalites .modalites-map__frame {
+    flex: none;
+    min-height: 200px;
   }
 
   #modalites .modalites-media {
     border-radius: var(--radius);
     border-left: 1px solid rgba(24, 20, 16, 0.1);
+    display: block;
   }
 
   #modalites .modalites-media .media__img {
     min-height: clamp(240px, 52vw, 340px);
     max-height: none;
+    height: auto;
+    flex: none;
   }
 
   #temoignages .two-col--narrow-left {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Domaines & cards: une colonne sur téléphone étroit (plus lisible que 2×2 serré) */
+@media (max-width: 640px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
@@ -1512,7 +1822,8 @@ textarea:focus {
     max-width: 100%;
     order: 3;
     margin-left: 0;
-    padding: 10px;
+    padding-block: 10px;
+    padding-inline: clamp(12px, 3vw, 22px);
     border: 1px solid rgba(24, 20, 16, 0.12);
     background: rgba(255, 255, 255, 0.92);
     border-radius: 16px;
@@ -1526,42 +1837,273 @@ textarea:focus {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    overflow: visible;
   }
 
-  .menu a {
+  .menu.is-open .menu-links {
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: visible;
+    width: 100%;
+    gap: 2px;
+  }
+
+  .menu.is-open .menu-links > a {
+    white-space: normal;
+    padding: 10px 12px;
+    height: auto;
+    min-height: 40px;
+  }
+
+  .menu.is-open .menu-dropdown {
+    width: 100%;
+  }
+
+  .menu.is-open .menu-dropdown__trigger {
+    width: 100%;
+    justify-content: flex-start;
+    height: auto;
+    min-height: 40px;
     padding: 10px 12px;
   }
 
-  .menu .button {
+  .menu.is-open .menu-dropdown__panel {
+    left: 12px;
+    right: auto;
+  }
+
+  .menu.is-open .menu-dropdown__item {
+    white-space: normal;
+    padding: 10px 12px;
+    height: auto;
+    min-height: 0;
+  }
+
+  .menu.is-open .menu-aside {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+    padding-top: 6px;
+  }
+
+  .menu.is-open .header-contact-icons {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 4px 0;
+  }
+
+  .menu.is-open .header-contact-trigger {
+    z-index: 1;
+  }
+
+  .menu.is-open .header-popover {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .menu.is-open .menu-aside .button {
     width: 100%;
     justify-content: center;
   }
+
+  .menu.is-open .header-contact-btn {
+    width: 44px;
+    height: 44px;
+  }
 }
 
-/* Phone */
+/* Phone — rythme vertical, cibles tactiles, images, pas de débordement horizontal */
 @media (max-width: 720px) {
+  html {
+    scroll-padding-top: clamp(68px, 16vw, 88px);
+  }
+
+  .nav {
+    padding-block: 8px;
+    row-gap: 8px;
+  }
+
   .burger {
     display: inline-flex;
   }
+
   .logo {
-    height: 36px;
+    height: 28px;
+  }
+
+  /* Phone menu: no dropdown interaction, show items directly, no contact icons */
+  .menu.is-open .menu-aside .header-contact-icons {
+    display: none;
+  }
+
+  .menu.is-open .menu-aside {
+    gap: 10px;
+    padding-top: 2px;
+  }
+
+  /* Phone: make the CTA look like the other nav items */
+  .menu.is-open .menu-aside .button,
+  .menu.is-open .menu-aside a.button--primary,
+  .menu.is-open .menu-aside .button.button--primary {
+    width: 100%;
+    justify-content: flex-start;
+    min-height: 44px;
+    height: auto;
+    padding: 12px 12px;
+    border-radius: 12px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .menu.is-open .menu-aside .button:hover,
+  .menu.is-open .menu-aside a.button--primary:hover,
+  .menu.is-open .menu-aside .button.button--primary:hover {
+    background: rgba(24, 20, 16, 0.06);
+    border-color: transparent;
+  }
+
+  .menu.is-open .menu-dropdown__trigger {
+    display: none;
+  }
+
+  .menu.is-open .menu-dropdown__panel {
+    position: static;
+    inset: auto;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 2px;
+  }
+
+  /* Make all mobile nav items look identical (including dropdown items) */
+  .menu.is-open .menu-links > a,
+  .menu.is-open .menu-dropdown__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 12px;
+    min-height: 44px;
+    height: auto;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .menu.is-open .menu-links > a:hover,
+  .menu.is-open .menu-dropdown__item:hover {
+    background: rgba(24, 20, 16, 0.06);
+  }
+
+  .menu.is-open .menu-dropdown__item-title {
+    display: inline;
+    font-weight: inherit;
+    color: inherit;
+  }
+
+  .menu.is-open .menu-dropdown__item-desc {
+    display: none;
   }
 
   .hero {
-    padding: 54px 0 28px;
+    padding: clamp(40px, 12vw, 54px) 0 clamp(24px, 8vw, 36px);
+  }
+
+  .hero-intro {
+    padding-bottom: clamp(14px, 4vw, 22px);
+  }
+
+  /* Phone typography rhythm + centered hero */
+  .hero-intro .container {
+    text-align: center;
+  }
+
+  .hero-intro__title {
+    margin: 0 0 8px;
+  }
+
+  .hero-intro__subtitle {
+    margin: 0;
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    text-align: center;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    text-align: center;
+  }
+
+  p {
+    margin: 0 0 14px;
+  }
+
+  .section-head {
+    gap: 10px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    padding-bottom: 0;
+  }
+
+  .section-head p {
+    margin: 0;
   }
 
   .section {
-    padding: 50px 0;
+    padding: 76px 0;
+  }
+
+  .hero + .section {
+    padding-top: clamp(76px, 16vw, 104px);
   }
 
   .section--domaines {
-    padding: clamp(48px, 9vw, 76px) clamp(14px, 4vw, 24px);
+    padding: clamp(40px, 8vw, 64px) clamp(12px, 4vw, 20px);
+  }
+
+  .section--pour-qui {
+    padding: clamp(44px, 8vw, 72px) clamp(14px, 4vw, 22px);
+  }
+
+  #approche.section {
+    padding-top: clamp(48px, 10vw, 72px);
+    padding-bottom: clamp(48px, 10vw, 72px);
   }
 
   #espace.section {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 76px;
+    padding-bottom: 76px;
   }
 
   #main > section.section.section--qui {
@@ -1570,40 +2112,274 @@ textarea:focus {
   }
 
   .section--espace .section-head {
-    padding-top: clamp(56px, 10vw, 96px);
-    padding-bottom: clamp(22px, 4vw, 36px);
+    /* No top padding for this title on phone */
+    padding-top: 0;
+    padding-bottom: clamp(18px, 4vw, 32px);
+  }
+
+  /* Per-section title spacing tweaks (phone only) */
+  #pour-qui .section-head,
+  #domaines .section-head,
+  #temoignages .section-head,
+  #contact .section-head,
+  #approche .section-head {
+    padding-top: 14px;
+  }
+
+  #pour-qui .section-head {
+    padding-top: 18px;
+  }
+
+  #domaines .section-head {
+    padding-top: 16px;
+  }
+
+  #temoignages .section-head {
+    padding-top: 16px;
+  }
+
+  #contact .section-head {
+    padding-top: 16px;
+  }
+
+  /* Approche: sentence case on phone + a bit of top padding */
+  #approche h2 {
+    padding-top: 6px;
+    text-transform: lowercase;
+  }
+
+  #approche h2::first-letter {
+    text-transform: uppercase;
+  }
+
+  /* Qui suis-je: put spacing on the title instead of section wrapper */
+  #qui .qui-title {
+    padding-top: 22px;
   }
 
   .hero-banner__img {
-    height: clamp(300px, 68vw, 440px);
+    height: clamp(260px, 62vw, 400px);
   }
 
+  /* Hero card under the banner, full width (phone only) */
+  .hero-banner__card-wrap {
+    position: static;
+    inset: auto;
+    display: block;
+    pointer-events: auto;
+  }
+
+  .hero-banner__card-inner,
   .hero-banner__card-inner.container {
-    width: min(calc(100% - 16px), var(--max));
-    margin-left: max(0px, calc((100% - min(calc(100% - 16px), var(--max))) / 4 - 10px));
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    pointer-events: auto;
   }
 
   .hero-floating-card {
-    max-width: 100%;
-    transform: translateY(8%);
+    max-width: none;
+    width: 100%;
+    transform: none;
+    margin: 0;
+    border-radius: 0;
+    padding: clamp(22px, 5vw, 34px);
+  }
+
+  .hero-floating-card p {
+    font-size: clamp(1rem, 3.8vw, 1.12rem);
+  }
+
+  .hero-floating-card__cta {
+    margin-top: 16px;
   }
 
   .hero-floating-card__cta .button {
     width: 100%;
     justify-content: center;
+    min-height: 46px;
+  }
+
+  .button {
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+
+  .menu-aside .button {
+    min-height: 46px;
+  }
+
+  .media__img {
+    min-height: 220px;
+  }
+
+  .media--sm .media__img {
+    min-height: 0;
+  }
+
+  #temoignages .temoignages-photo .media__img {
+    height: clamp(200px, 58vw, 360px);
+    min-height: 0;
+  }
+
+  .section--domaines .domaines-hero-media .media__img {
+    min-height: clamp(220px, 48vw, 360px);
+    height: clamp(220px, 48vw, 360px);
+  }
+
+  .container.espace {
+    padding-left: max(env(safe-area-inset-left, 0px), clamp(16px, 4vw, 24px));
+    padding-right: max(env(safe-area-inset-right, 0px), clamp(16px, 4vw, 24px));
+  }
+
+  /* Remove 2.avif section image on phone */
+  .section--espace .espace__media {
+    display: none;
+  }
+
+  .container.espace {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .contact-item.contact-form {
+    padding: clamp(16px, 4vw, 20px);
+  }
+
+  .contact-form__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-form__actions .button {
+    width: 100%;
+  }
+
+  .pour-qui-cta .button,
+  .domaines-cta .button,
+  .approche-cta .button,
+  #modalites .modalites-cta .button,
+  .temoignages-cta .button,
+  .qui-card__cta .button,
+  .espace__cta .button {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  body .widget-wrapper > a strong {
+    font-size: clamp(1.35rem, 7vw, 1.75rem) !important;
+  }
+
+  /* "Qui suis je ?" phone: no background image; portrait under the text, 80% width */
+  #qui.qui-card.card.container::before {
+    display: none;
+  }
+
+  #qui.qui-card.card.container {
+    background: transparent;
+    padding-top: clamp(28px, 8vw, 44px);
+    padding-bottom: clamp(28px, 8vw, 44px);
+  }
+
+  #qui > div.qui-card__text {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(18px, 5vw, 28px);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+  }
+
+  #qui .qui-card__text .qui-card__portrait {
+    position: static;
+    inset: auto;
+    transform: none;
+    width: 80%;
+    max-width: 80%;
+    margin: 18px auto 0;
+    order: 99;
+    aspect-ratio: 1 / 1;
+  }
+
+  #qui .qui-card__portrait-img {
+    border-radius: var(--radius-sm);
+  }
+
+  /* Remove 9.avif on phone */
+  #temoignages .temoignages-photo {
+    display: none;
+  }
+
+  /* Footer centered on phone */
+  .footer-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footer-col:nth-child(1),
+  .footer-col:nth-child(2),
+  .footer-col:nth-child(3) {
+    text-align: center;
+  }
+
+  .footer-col--brand {
+    justify-content: center;
   }
 
   .card {
-    padding: 16px;
+    padding: 15px;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    width: min(calc(100% - 28px), var(--max));
+    width: min(calc(100% - 24px), var(--max));
+  }
+
+  .hero .container {
+    width: min(calc(100% - 20px), var(--max));
   }
 
   .site-header .container {
-    padding-inline: clamp(12px, 4vw, 20px);
+    padding-left: max(env(safe-area-inset-left, 0px), clamp(12px, 4vw, 20px));
+    padding-right: max(env(safe-area-inset-right, 0px), clamp(12px, 4vw, 20px));
   }
+
+  h2 {
+    font-size: clamp(1.42rem, 1.02rem + 3.4vw, 1.72rem);
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  h3 {
+    font-size: clamp(1.08rem, 1rem + 0.9vw, 1.2rem);
+  }
+
+  p {
+    font-size: clamp(1.02rem, 2.9vw, 1.1rem);
+  }
+
+  .hero-intro__subtitle {
+    font-size: clamp(1.28rem, 0.92rem + 3vw, 1.5rem);
+  }
+
+  .section {
+    padding: 36px 0;
+  }
+
+  .hero-floating-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* "Qui suis je ?" is already reworked in the 720px block (no background, portrait below text) */
 }
