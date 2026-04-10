@@ -816,8 +816,8 @@ button.button {
   position: absolute;
   top: -30px;
   right: -22px;
-  width: clamp(420px, 56vw, 600px);
-  max-width: min(600px, calc(100% - 12px));
+  width: clamp(390px, 53vw, 560px);
+  max-width: min(560px, calc(100% - 12px));
   aspect-ratio: 1;
   padding: 0;
   margin: 0;
@@ -827,7 +827,7 @@ button.button {
   background: transparent;
   box-shadow: none;
   z-index: 2;
-  transform: translateX(44%);
+  transform: translateX(42%);
   transform-origin: center center;
 }
 
@@ -862,6 +862,10 @@ button.button {
 
 #qui .qui-card__text p {
   color: #000;
+}
+
+#qui .qui-card__text h3 {
+  margin: 18px 0;
 }
 
 .qui-card__text > p:last-of-type {
@@ -1511,6 +1515,10 @@ textarea:focus {
   margin-bottom: 0;
   padding-top: clamp(88px, 12vw, 140px);
   padding-bottom: clamp(18px, 3vw, 32px);
+}
+
+#espace .section-head h2 {
+  line-height: 1.02;
 }
 
 .section--pour-qui {
@@ -2393,8 +2401,8 @@ textarea:focus {
 
   /* Qui suis-je: title -> portrait -> text (phone only) */
   #qui .qui-card__text .qui-card__portrait--mobile {
-    width: 96%;
-    max-width: 96%;
+    width: 92%;
+    max-width: 92%;
     margin: 0 0 12px auto;
     aspect-ratio: 1 / 1;
     overflow: hidden;
