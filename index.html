@@ -14,10 +14,10 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="icon" href="./assets/logo2.png" type="image/png" sizes="any" />
     <link rel="apple-touch-icon" href="./assets/logo2.png" />
-    <!-- URL du site : faire un rechercher-remplacer de https://rio-noben.fr/ si votre domaine hébergé est différent (ex. www). -->
-    <link rel="canonical" href="https://rio-noben.fr/" />
-    <link rel="alternate" hreflang="fr-FR" href="https://rio-noben.fr/" />
-    <link rel="alternate" hreflang="x-default" href="https://rio-noben.fr/" />
+    <!-- Domaine canonique : https://rio-therapie.fr/ (adapter si vous servez le site sous www). -->
+    <link rel="canonical" href="https://rio-therapie.fr/" />
+    <link rel="alternate" hreflang="fr-FR" href="https://rio-therapie.fr/" />
+    <link rel="alternate" hreflang="x-default" href="https://rio-therapie.fr/" />
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
@@ -27,8 +27,8 @@
       property="og:description"
       content="Rio Noben, thérapie humaniste. Accompagnement psychologique à Montpellier. Séances de 1h en cabinet ou en ligne."
     />
-    <meta property="og:url" content="https://rio-noben.fr/" />
-    <meta property="og:image" content="https://rio-noben.fr/assets/logo.png" />
+    <meta property="og:url" content="https://rio-therapie.fr/" />
+    <meta property="og:image" content="https://rio-therapie.fr/assets/logo.png" />
     <meta property="og:image:alt" content="Rio Noben — cabinet de thérapie à Montpellier" />
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -37,36 +37,37 @@
       name="twitter:description"
       content="Rio Noben, thérapie humaniste. Accompagnement psychologique à Montpellier. Séances de 1h en cabinet ou en ligne."
     />
-    <meta name="twitter:image" content="https://rio-noben.fr/assets/logo.png" />
+    <meta name="twitter:image" content="https://rio-therapie.fr/assets/logo.png" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": "WebSite",
-            "@id": "https://rio-noben.fr/#website",
-            "url": "https://rio-noben.fr/",
+            "@id": "https://rio-therapie.fr/#website",
+            "url": "https://rio-therapie.fr/",
             "name": "Rio Noben",
             "description": "Thérapie humaniste — Approche centrée sur la personne. Cabinet à Montpellier, séances en présentiel ou en visio.",
             "inLanguage": "fr-FR",
-            "publisher": { "@id": "https://rio-noben.fr/#business" }
+            "publisher": { "@id": "https://rio-therapie.fr/#business" }
           },
           {
             "@type": "WebPage",
-            "@id": "https://rio-noben.fr/#webpage",
-            "url": "https://rio-noben.fr/",
+            "@id": "https://rio-therapie.fr/#webpage",
+            "url": "https://rio-therapie.fr/",
             "name": "Rio Noben — Thérapie humaniste à Montpellier",
-            "isPartOf": { "@id": "https://rio-noben.fr/#website" },
-            "about": { "@id": "https://rio-noben.fr/#business" },
+            "isPartOf": { "@id": "https://rio-therapie.fr/#website" },
+            "about": { "@id": "https://rio-therapie.fr/#business" },
             "inLanguage": "fr-FR"
           },
           {
             "@type": ["ProfessionalService", "LocalBusiness"],
-            "@id": "https://rio-noben.fr/#business",
+            "@id": "https://rio-therapie.fr/#business",
             "name": "Rio Noben",
             "description": "Thérapeute à Montpellier, pratique en Approche centrée sur la personne (humaniste). Accompagnement pour adultes, jeunes adultes et couples — cabinet ou visio.",
-            "url": "https://rio-noben.fr/",
-            "image": ["https://rio-noben.fr/assets/logo.png"],
+            "url": "https://rio-therapie.fr/",
+            "sameAs": ["https://www.psychologue.net/cabinets/rio-noben"],
+            "image": ["https://rio-therapie.fr/assets/logo.png"],
             "telephone": "+33620326902",
             "email": "nobenrio@proton.me",
             "address": {
@@ -106,34 +107,36 @@
                 "urlTemplate": "https://calendar.tmhsuite.com/rionoben",
                 "inLanguage": "fr",
                 "actionPlatform": [
-                  "http://schema.org/DesktopWebPlatform",
-                  "http://schema.org/MobileWebPlatform"
+                  "https://schema.org/DesktopWebPlatform",
+                  "https://schema.org/MobileWebPlatform"
                 ]
               }
             }
           },
           {
             "@type": "Person",
-            "@id": "https://rio-noben.fr/#person",
+            "@id": "https://rio-therapie.fr/#person",
             "name": "Rio Noben",
             "jobTitle": "Thérapeute",
-            "worksFor": { "@id": "https://rio-noben.fr/#business" },
+            "worksFor": { "@id": "https://rio-therapie.fr/#business" },
             "knowsAbout": [
               "Thérapie humaniste",
               "Approche centrée sur la personne",
               "Carl Rogers"
             ],
-            "image": "https://rio-noben.fr/assets/profile.avif"
+            "image": "https://rio-therapie.fr/assets/profile.avif"
           }
         ]
       }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.psychologue.net" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://www.psychologue.net/10017784/css/widget.css" />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./main.js"></script>
   </head>
@@ -146,12 +149,14 @@
       <div class="container">
         <div class="nav">
           <a href="#page-top" aria-label="Retour en haut" class="brand">
-            <img
-              class="logo"
-              alt="Rio Noben"
-              src="./assets/logo.png"
-              loading="eager"
-            />
+            <picture class="site-img">
+              <source srcset="./assets/logo.png" type="image/png" />
+              <source srcset="./assets/logo.avif" type="image/avif" />
+              <source srcset="./assets/logo.webp" type="image/webp" />
+              <source srcset="./assets/logo.jpeg" type="image/jpeg" />
+              <source srcset="./assets/logo.jpg" type="image/jpeg" />
+              <img class="logo" alt="Rio Noben" src="./assets/logo.png" loading="eager" />
+            </picture>
           </a>
 
           <button class="burger" type="button" aria-expanded="false" aria-controls="menu">
@@ -187,7 +192,7 @@
                   </a>
                 </div>
               </div>
-              <a href="#qui">Qui suis je ?</a>
+              <a href="#qui">Qui suis-je ?</a>
               <a href="#domaines">Accompagnements</a>
               <a href="#modalites">Infos pratiques</a>
               <a href="#temoignages">Témoignages</a>
@@ -257,7 +262,19 @@
         </div>
 
         <div class="hero-banner-wrap hero-banner--full" aria-label="Bannière">
-          <img class="hero-banner__img" src="./assets/1.avif" alt="" loading="eager" />
+          <picture class="site-img">
+            <source srcset="./assets/1.avif" type="image/avif" />
+            <source srcset="./assets/1.webp" type="image/webp" />
+            <source srcset="./assets/1.png" type="image/png" />
+            <source srcset="./assets/1.jpg" type="image/jpeg" />
+            <source srcset="./assets/1.jpeg" type="image/jpeg" />
+            <img
+              class="hero-banner__img"
+              src="./assets/1.avif"
+              alt="Cabinet de thérapie humaniste à Montpellier — accompagnement psychologique"
+              loading="eager"
+            />
+          </picture>
           <div class="hero-banner__card-wrap">
             <div class="container hero-banner__card-inner">
               <div class="hero-floating-card">
@@ -307,7 +324,14 @@
             </div>
           </div>
           <div class="espace__media media media--sage" aria-label="Illustration">
-            <img class="media__img" src="./assets/2.avif" alt="" loading="lazy" />
+            <picture class="site-img">
+              <source srcset="./assets/2.avif" type="image/avif" />
+              <source srcset="./assets/2.webp" type="image/webp" />
+              <source srcset="./assets/2.png" type="image/png" />
+              <source srcset="./assets/2.jpg" type="image/jpeg" />
+              <source srcset="./assets/2.jpeg" type="image/jpeg" />
+              <img class="media__img" src="./assets/2.avif" alt="" loading="lazy" />
+            </picture>
           </div>
         </div>
       </section>
@@ -320,7 +344,14 @@
 
           <div class="two-col two-col--pour-qui">
             <div class="card card--sage">
-              <img class="card__media" src="./assets/3.avif" alt="" loading="lazy" />
+              <picture class="site-img">
+                <source srcset="./assets/3.avif" type="image/avif" />
+                <source srcset="./assets/3.webp" type="image/webp" />
+                <source srcset="./assets/3.png" type="image/png" />
+                <source srcset="./assets/3.jpg" type="image/jpeg" />
+                <source srcset="./assets/3.jpeg" type="image/jpeg" />
+                <img class="card__media" src="./assets/3.avif" alt="" loading="lazy" />
+              </picture>
               <h3>Pour vous, seul.e ou en couple :</h3>
               <ul class="list">
                 <li>Adultes et jeunes adultes cherchant à retrouver un équilibre</li>
@@ -330,7 +361,14 @@
             </div>
 
             <div class="card card--sage">
-              <img class="card__media" src="./assets/4.avif" alt="" loading="lazy" />
+              <picture class="site-img">
+                <source srcset="./assets/4.avif" type="image/avif" />
+                <source srcset="./assets/4.webp" type="image/webp" />
+                <source srcset="./assets/4.png" type="image/png" />
+                <source srcset="./assets/4.jpg" type="image/jpeg" />
+                <source srcset="./assets/4.jpeg" type="image/jpeg" />
+                <img class="card__media" src="./assets/4.avif" alt="" loading="lazy" />
+              </picture>
               <h3>Une main tendue pour traverser :</h3>
               <ul class="list">
                 <li>L'anxiété persistante, le stress ou le sentiment de burn-out</li>
@@ -394,7 +432,14 @@
             </div>
 
             <div class="media" aria-label="Illustration">
-              <img class="media__img" src="./assets/5.jpeg" alt="" loading="lazy" />
+              <picture class="site-img">
+                <source srcset="./assets/5.jpeg" type="image/jpeg" />
+                <source srcset="./assets/5.jpg" type="image/jpeg" />
+                <source srcset="./assets/5.png" type="image/png" />
+                <source srcset="./assets/5.webp" type="image/webp" />
+                <source srcset="./assets/5.avif" type="image/avif" />
+                <img class="media__img" src="./assets/5.jpeg" alt="" loading="lazy" />
+              </picture>
             </div>
           </div>
         </div>
@@ -404,21 +449,35 @@
         <div id="qui" class="qui-card card container">
             <div class="qui-card__text">
               <div class="qui-card__portrait qui-card__portrait--desktop" aria-label="Portrait">
-                <img
-                  class="qui-card__portrait-img"
-                  src="./assets/profile.avif"
-                  alt="Portrait de Rio Noben"
-                  loading="lazy"
-                />
+                <picture class="site-img">
+                  <source srcset="./assets/profile.avif" type="image/avif" />
+                  <source srcset="./assets/profile.webp" type="image/webp" />
+                  <source srcset="./assets/profile.png" type="image/png" />
+                  <source srcset="./assets/profile.jpg" type="image/jpeg" />
+                  <source srcset="./assets/profile.jpeg" type="image/jpeg" />
+                  <img
+                    class="qui-card__portrait-img"
+                    src="./assets/profile.avif"
+                    alt="Portrait de Rio Noben"
+                    loading="lazy"
+                  />
+                </picture>
               </div>
-              <h2 class="qui-title">Qui suis je ?</h2>
+              <h2 class="qui-title">Qui suis-je ?</h2>
               <div class="qui-card__portrait qui-card__portrait--mobile" aria-label="Portrait">
-                <img
-                  class="qui-card__portrait-img"
-                  src="./assets/profile.avif"
-                  alt="Portrait de Rio Noben"
-                  loading="lazy"
-                />
+                <picture class="site-img">
+                  <source srcset="./assets/profile.avif" type="image/avif" />
+                  <source srcset="./assets/profile.webp" type="image/webp" />
+                  <source srcset="./assets/profile.png" type="image/png" />
+                  <source srcset="./assets/profile.jpg" type="image/jpeg" />
+                  <source srcset="./assets/profile.jpeg" type="image/jpeg" />
+                  <img
+                    class="qui-card__portrait-img"
+                    src="./assets/profile.avif"
+                    alt="Portrait de Rio Noben"
+                    loading="lazy"
+                  />
+                </picture>
               </div>
               <p>
                 Je suis <em>Rio Noben</em>, thérapeute à Montpellier, spécialisé·e dans l’Approche Centrée sur la
@@ -511,7 +570,14 @@
           </div>
 
           <div class="media card domaines-hero-media" aria-label="Illustration">
-            <img class="media__img" src="./assets/7.avif" alt="" loading="lazy" />
+            <picture class="site-img">
+              <source srcset="./assets/7.avif" type="image/avif" />
+              <source srcset="./assets/7.webp" type="image/webp" />
+              <source srcset="./assets/7.png" type="image/png" />
+              <source srcset="./assets/7.jpg" type="image/jpeg" />
+              <source srcset="./assets/7.jpeg" type="image/jpeg" />
+              <img class="media__img" src="./assets/7.avif" alt="" loading="lazy" />
+            </picture>
           </div>
           <div class="card-grid">
             <div class="card">
@@ -575,7 +641,14 @@
       <section id="modalites" class="section section--sage">
         <div class="modalites-shell">
           <div class="modalites-media media card" aria-label="Illustration">
-            <img class="media__img" src="./assets/8.avif" alt="" loading="lazy" />
+            <picture class="site-img">
+              <source srcset="./assets/8.avif" type="image/avif" />
+              <source srcset="./assets/8.webp" type="image/webp" />
+              <source srcset="./assets/8.png" type="image/png" />
+              <source srcset="./assets/8.jpg" type="image/jpeg" />
+              <source srcset="./assets/8.jpeg" type="image/jpeg" />
+              <img class="media__img" src="./assets/8.avif" alt="" loading="lazy" />
+            </picture>
           </div>
 
           <div class="modalites-body">
@@ -590,7 +663,7 @@
                   profondeur.
                 </p>
                 <p>
-                  <strong>Lieu :</strong> Je vous accueille au 11 rue du Faubourg de Nimes à Montpellier (proche Corum) ou
+                  <strong>Lieu :</strong> Je vous accueille au 11 rue du Faubourg de Nîmes à Montpellier (proche Corum) ou
                   en visio (téléphone/vidéo) selon votre préférence.
                 </p>
                 <p>
@@ -640,11 +713,36 @@
             <p>Quelques retours de personnes accompagnées dans leur cheminement personnel et leurs transitions de vie.</p>
           </div>
 
-          <div class="card temoignages-reviews">
-            <p class="fine">
-              Pour préserver votre confidentialité et éviter tout suivi/traceur, cette page n’intègre pas de widget de
-              plateforme externe.
-            </p>
+          <div class="two-col two-col--narrow-left">
+            <div class="temoignages-aside">
+              <div class="media card media--sm temoignages-photo" aria-label="Illustration">
+                <picture class="site-img">
+                  <source srcset="./assets/9.avif" type="image/avif" />
+                  <source srcset="./assets/9.webp" type="image/webp" />
+                  <source srcset="./assets/9.png" type="image/png" />
+                  <source srcset="./assets/9.jpg" type="image/jpeg" />
+                  <source srcset="./assets/9.jpeg" type="image/jpeg" />
+                  <img class="media__img" src="./assets/9.avif" alt="" loading="lazy" />
+                </picture>
+              </div>
+            </div>
+
+            <div class="card temoignages-reviews">
+              <div id="js_widget" class="ie-common-widget ie-reviews"></div>
+              <script
+                type="text/javascript"
+                src="https://www.psychologue.net/widget/review_extended?com=476935&amp;h=940d279074fee1da23d74953ffe6aba8&amp;v=10"
+              ></script>
+            </div>
+          </div>
+
+          <div class="temoignages-stamp">
+            <img
+              src="https://www.psychologue.net/stamp.xpng?com=476935&amp;v=10"
+              alt="Rio Noben"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           <div class="temoignages-cta">
@@ -700,10 +798,17 @@
       <div class="container">
         <div class="footer-row">
           <div class="footer-col footer-col--brand">
-            <img class="footer-logo" src="./assets/logo.png" alt="Rio Noben" loading="lazy" />
+            <picture class="site-img">
+              <source srcset="./assets/logo.png" type="image/png" />
+              <source srcset="./assets/logo.avif" type="image/avif" />
+              <source srcset="./assets/logo.webp" type="image/webp" />
+              <source srcset="./assets/logo.jpeg" type="image/jpeg" />
+              <source srcset="./assets/logo.jpg" type="image/jpeg" />
+              <img class="footer-logo" src="./assets/logo.png" alt="Rio Noben" loading="lazy" />
+            </picture>
             <span class="footer-year">© <span id="year"></span></span>
           </div>
-          <div class="footer-col">11 rue du Faubourg de Nimes<br />34000 Montpellier</div>
+          <div class="footer-col">11 rue du Faubourg de Nîmes<br />34000 Montpellier</div>
           <div class="footer-col"><a href="./mentions-legales.html">Mentions légales &amp; confidentialité</a></div>
           <div class="footer-col">
             <a href="tel:+33620326902">06 20 32 69 02</a><br />

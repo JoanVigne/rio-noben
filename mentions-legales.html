@@ -12,7 +12,24 @@
     />
     <link rel="icon" href="./assets/logo2.png" type="image/png" sizes="any" />
     <link rel="apple-touch-icon" href="./assets/logo2.png" />
-    <link rel="canonical" href="https://rio-noben.fr/mentions-legales.html" />
+    <link rel="canonical" href="https://rio-therapie.fr/mentions-legales.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Mentions légales &amp; confidentialité — Rio Noben" />
+    <meta
+      property="og:description"
+      content="Mentions légales et politique de confidentialité (RGPD) du site de Rio Noben."
+    />
+    <meta property="og:url" content="https://rio-therapie.fr/mentions-legales.html" />
+    <meta property="og:image" content="https://rio-therapie.fr/assets/logo.png" />
+    <meta property="og:image:alt" content="Rio Noben" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://rio-therapie.fr/assets/logo.png" />
+    <meta name="twitter:title" content="Mentions légales &amp; confidentialité — Rio Noben" />
+    <meta
+      name="twitter:description"
+      content="Mentions légales et politique de confidentialité (RGPD) du site de Rio Noben."
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -22,7 +39,14 @@
       <div class="container">
         <nav class="nav" aria-label="Navigation principale">
           <a class="brand" href="./index.html#page-top" aria-label="Retour à l’accueil">
-            <img class="logo" src="./assets/logo.png" alt="Rio Noben" />
+            <picture class="site-img">
+              <source srcset="./assets/logo.png" type="image/png" />
+              <source srcset="./assets/logo.avif" type="image/avif" />
+              <source srcset="./assets/logo.webp" type="image/webp" />
+              <source srcset="./assets/logo.jpeg" type="image/jpeg" />
+              <source srcset="./assets/logo.jpg" type="image/jpeg" />
+              <img class="logo" src="./assets/logo.png" alt="Rio Noben" />
+            </picture>
           </a>
           <div class="menu" style="justify-content: flex-end">
             <div class="menu-links" style="justify-content: flex-end">
@@ -102,10 +126,17 @@
       <div class="container">
         <div class="footer-row">
           <div class="footer-col footer-col--brand">
-            <img class="footer-logo" src="./assets/logo.png" alt="Rio Noben" loading="lazy" />
+            <picture class="site-img">
+              <source srcset="./assets/logo.png" type="image/png" />
+              <source srcset="./assets/logo.avif" type="image/avif" />
+              <source srcset="./assets/logo.webp" type="image/webp" />
+              <source srcset="./assets/logo.jpeg" type="image/jpeg" />
+              <source srcset="./assets/logo.jpg" type="image/jpeg" />
+              <img class="footer-logo" src="./assets/logo.png" alt="Rio Noben" loading="lazy" />
+            </picture>
             <span class="footer-year">© <span id="year"></span></span>
           </div>
-          <div class="footer-col">11 rue du Faubourg de Nimes<br />34000 Montpellier</div>
+          <div class="footer-col">11 rue du Faubourg de Nîmes<br />34000 Montpellier</div>
           <div class="footer-col"><a href="./mentions-legales.html" aria-current="page">Mentions légales &amp; confidentialité</a></div>
           <div class="footer-col">
             <a href="tel:+33620326902">06 20 32 69 02</a><br />

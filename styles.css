@@ -124,6 +124,11 @@ img {
   height: auto;
 }
 
+/* Keeps layout identical when <img> is wrapped in <picture> (format fallbacks). */
+picture.site-img {
+  display: contents;
+}
+
 a {
   color: inherit;
   text-decoration: none;
